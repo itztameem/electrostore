@@ -30,11 +30,15 @@ A modern E-Commerce frontend website built using React and Vite.
 
 ### Products
 
-![Products](./screenshots/products.png)
+![Products](./screenshots/product.png)
 
-### Footer
+### Footer 1
 
-![Footer](./screenshots/footer.png)
+![Footer 1](./screenshots/footer1.png)
+
+### Footer 2
+
+![Footer 2](./screenshots/footer2.png)
 
 ## Author
 
