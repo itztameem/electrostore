@@ -1,15 +1,20 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 export const Navbar = () => {
   return (
     <nav style={styles.navbar}>
       <div style={styles.logo}>Electro<span style={{ color: '#0070f3' }}>Store</span></div>
       <div style={styles.navLinks}>
-        <a href="#home" style={styles.navLink}>Home</a>
-        <a href="#categories" style={styles.navLink}>Categories</a>
-        <a href="#products" style={styles.navLink}>Products</a>
-        <a href="#contact" style={styles.navLink}>Contact</a>
-      </div>
+        <Link to="/">Home</Link>
+        <Link to="/categories">Categories</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/features">Features</Link>
+        <Link to="/testimonials">Testimonials</Link>
+        <Link to="/newsletter">Newsletter</Link>
+        <Link to="/footer">Footer</Link>
+        
+             </div>
       <div style={styles.cartIcon}>
         🛒 <span style={styles.cartCount}>2</span>
       </div>
