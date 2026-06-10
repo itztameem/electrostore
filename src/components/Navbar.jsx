@@ -8,10 +8,7 @@ export const Navbar = () => {
       <div style={styles.navLinks}>
         <Link to="/">Home</Link>
         <Link to="/categories">Categories</Link>
-        <Link to="/products">Products</Link>
-        <Link to="/features">Features</Link>
-        <Link to="/testimonials">Testimonials</Link>
-        <Link to="/newsletter">Newsletter</Link>
+        <Link to="/features">About</Link>
         <Link to="/footer">Footer</Link>
         
              </div>
