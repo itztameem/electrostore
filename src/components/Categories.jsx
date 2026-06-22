@@ -25,9 +25,9 @@ export const Categories = () => {
 };
 
 const styles = {
-  section: { padding: '60px 40px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'sans-serif' },
+  section: { padding: '60px 40px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'sans-serif',textAlign:'center' },
   sectionTitle: { fontSize: '28px', fontWeight: '700', marginBottom: '30px', textAlign: 'center' },
-  categoryGrid: { display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'centre', gap: '20px' },
+  categoryGrid: { display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems:'center', gap: '20px',width:'100%' },
   categoryCard: { backgroundColor: 'white', padding: '30px 20px', borderRadius: '8px', textAlign: 'center', boxShadow: '0 4px 6px rgba(0,0,0,0.02)', border: '1px solid #f3f4f6', cursor: 'pointer' },
   categoryIcon: { fontSize: '40px', marginBottom: '15px' },
   categoryName: { fontSize: '18px', margin: '0 0 5px 0', fontWeight: '600' },
