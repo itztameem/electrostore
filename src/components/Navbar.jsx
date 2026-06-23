@@ -10,6 +10,7 @@ export const Navbar = () => {
         <Link to="/categories">Categories</Link>
         <Link to="/features">About</Link>
         <Link to="/footer">Footer</Link>
+        <Link to="/cart">Cart</Link>
         
              </div>
       <div style={styles.cartIcon}>

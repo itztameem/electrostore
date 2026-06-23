@@ -1,6 +1,25 @@
 import React, { useState } from 'react';
-export
-const ProductGrid = () => {
+import { supabase } from '../supabase';
+export const ProductGrid = () => {
+  async function addToCart(product) {
+  const { error } = await supabase
+    .from("cart")
+    .insert([
+      {
+        name: product.name,
+        price: parseFloat(product.price.replace(/[$,]/g, "")),
+        quantity: 1
+      }
+    ]);
+
+  if (error) {
+    console.log(error);
+    alert("Failed to add product");
+  } else {
+    alert("Product added to cart!");
+  }
+}
+
   const [hoveredProductId, setHoveredProductId] = useState(null);
 
   // Replaced emoji strings with professional web image links
@@ -35,16 +54,20 @@ const ProductGrid = () => {
               <div style={styles.productFlex}>
                 <span style={styles.productPrice}>{product.price}</span>
                 
-                <button 
-                  onMouseEnter={() => setHoveredProductId(product.id)}
-                  onMouseLeave={() => setHoveredProductId(null)}
-                  style={{
+                <button
+                 onClick={() => addToCart(product)}
+                 onMouseEnter={() => setHoveredProductId(product.id)}
+                 onMouseLeave={() => setHoveredProductId(null)}
+                 style={{
                     ...styles.addToCartBtn,
-                    ...(hoveredProductId === product.id ? styles.addToCartBtnHover : {})
-                  }}
-                >
-                  Add to Cart
+                   ...(hoveredProductId === product.id
+                        ? styles.addToCartBtnHover
+                        : {})
+                    }}
+                  >
+                    Add to Cart
                 </button>
+                                  
               </div>
 
             </div>
