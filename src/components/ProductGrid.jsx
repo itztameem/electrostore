@@ -2,14 +2,24 @@ import React, { useState } from 'react';
 import { supabase } from '../supabase';
 export const ProductGrid = () => {
   async function addToCart(product) {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    alert("Please login first.");
+    return;
+  }
+
   const { error } = await supabase
     .from("cart")
     .insert([
       {
+        user_id: user.id,
         name: product.name,
         price: parseFloat(product.price.replace(/[$,]/g, "")),
-        quantity: 1
-      }
+        quantity: 1,
+      },
     ]);
 
   if (error) {

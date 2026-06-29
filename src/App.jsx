@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 import {AnnouncementBar} from "./components/AnnouncementBar";
 import {Navbar} from "./components/Navbar";
-
+import Login from "./Pages/Login";
+import Signup from "./Pages/signup";
 import {Home} from "./Pages/Home";
 import {CategoriesPage} from "./Pages/CategoriesPage";
 import {ProductsPage} from "./Pages/ProductsPage";
@@ -23,7 +24,13 @@ function App() {
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/features" element={<FeaturesPage />} />
         <Route path="/footer" element={<FooterPage />} />
-        <Route path="/cart" element={<CartPage/>}/>
+        <Route path="/cart" element={
+          <ProtectedRoute>
+            <CartPage/>
+            </ProtectedRoute>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
+
       </Routes>
     </>
   );

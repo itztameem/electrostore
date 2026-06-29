@@ -1,7 +1,24 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { supabase } from "../supabase";
+import { signOut } from "../auth";
 
 export const Navbar = () => {
+  const [user, setUser] = useState(null);
+
+useEffect(() => {
+  supabase.auth.getUser().then(({ data }) => {
+    setUser(data.user);
+  });
+}, []);
+
+const handleLogout = async () => {
+  await signOut();
+  setUser(null);
+  window.location.reload();
+};
+
+
   return (
     <nav style={styles.navbar}>
       <div style={styles.logo}>Electro<span style={{ color: '#0070f3' }}>Store</span></div>
@@ -11,7 +28,25 @@ export const Navbar = () => {
         <Link to="/features">About</Link>
         <Link to="/footer">Footer</Link>
         <Link to="/cart">Cart</Link>
-        
+
+{user ? (
+  <button
+    onClick={handleLogout}
+    style={{
+      border: "none",
+      background: "transparent",
+      cursor: "pointer",
+      fontSize: "16px",
+    }}
+  >
+    Logout
+  </button>
+) : (
+  <>
+    <Link to="/login">Login</Link>
+    <Link to="/signup">Signup</Link>
+  </>
+)}
              </div>
       <div style={styles.cartIcon}>
         🛒 <span style={styles.cartCount}>2</span>

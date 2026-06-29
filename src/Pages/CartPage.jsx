@@ -9,27 +9,43 @@ export default function CartPage() {
   }, []);
 
   async function fetchCart() {
-    const { data } = await supabase
-      .from("cart")
-      .select("*");
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-    setCart(data);
-  }
+  if (!user) return;
+
+  const { data } = await supabase
+    .from("cart")
+    .select("*")
+    .eq("user_id", user.id);
+
+  setCart(data);
+}
   async function increaseQuantity(id, qty) {
+    const{
+      data:{user},
+    }= await supabase.auth.getUser();
   await supabase
     .from("cart")
     .update({
       quantity: qty + 1
     })
-    .eq("id", id);
+     .eq("id", id)
+    .eq("user_id", user.id);
 
   fetchCart();
 }
 async function deleteItem(id) {
+  const{
+      data:{user},
+    }= await supabase.auth.getUser();
   await supabase
     .from("cart")
     .delete()
-    .eq("id", id);
+
+.eq("id", id)
+.eq("user_id", user.id);
 
   fetchCart();
 }
